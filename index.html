@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Test para la obtención de Licencia de Conducir en Argentina. ¡Con preguntas reales!" />
+  <meta name="keywords" content="test vial, licencia de conducir argentina, preguntas reales, señales de tránsito, examen de conducir, clase B1, clase B2, seguridad vial, automóviles, camionetas, utilitarios, casas rodantes motorizadas" />
+  <meta name="robots" content="index,follow" />
+  <title>Test-Vial</title>
+  <link rel="shortcut icon" type="image/png" href="./favicon.png?">
+  <style>
+    :root{--bg:#0b1220;--card:rgba(17,26,46,.78);--text:#eaf1ff;--muted:#9fb0d0;--line:rgba(255,255,255,.10);--primary:#7c8cff;--primary2:#59d7ff;--success:#3ddc97;--danger:#ff6b7a;--shadow:0 18px 50px rgba(0,0,0,.35);--radius:24px;--max:1100px}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at top left,rgba(124,140,255,.20),transparent 28%),radial-gradient(circle at top right,rgba(89,215,255,.16),transparent 24%),linear-gradient(180deg,#07101d 0%,#0b1220 45%,#060b14 100%);color:var(--text)}
+    button{font:inherit;touch-action:manipulation}
+    .app{min-height:100vh;display:flex;flex-direction:column}
+    .topbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:rgba(7,16,29,.72);border-bottom:1px solid var(--line)}
+    .topbar-inner,.container{width:min(var(--max),calc(100% - 32px));margin:0 auto}.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}.brand-badge{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;font-weight:800;box-shadow:0 10px 24px rgba(89,215,255,.25);flex:0 0 auto}.brand h1{margin:0;font-size:1.02rem;line-height:1.1}.brand p{margin:3px 0 0;color:var(--muted);font-size:.88rem}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);white-space:nowrap;font-size:.92rem}
+    .hero{padding:28px 0 12px}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}
+    .panel{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.panel-main{padding:30px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(124,140,255,.12);border:1px solid rgba(124,140,255,.22);color:#cad2ff;font-size:.86rem;margin-bottom:18px}
+    .hero h2{margin:0;font-size:clamp(2rem,4vw,3.4rem);line-height:1.05;letter-spacing:-.04em}.hero p{margin:16px 0 0;font-size:1.02rem;line-height:1.65;color:var(--muted);max-width:62ch}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.stat{padding:14px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.stat strong{display:block;font-size:1.15rem;margin-bottom:4px}.stat span{color:var(--muted);font-size:.88rem;line-height:1.4}
+    .hero-side{padding:24px;display:flex;flex-direction:column;justify-content:center;gap:14px}.activity-card{padding:18px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.activity-card h3{margin:0 0 8px;font-size:1.05rem}.activity-card p{margin:0 0 14px;color:var(--muted);line-height:1.55;font-size:.95rem}
+    .actions{display:flex;flex-wrap:wrap;gap:10px}
+    .btn{appearance:none;border:0;border-radius:14px;padding:12px 16px;font-weight:700;cursor:pointer;transition:transform .12s ease,opacity .12s ease,box-shadow .12s ease,filter .12s ease;background-clip:padding-box}
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active,.count-btn:active,.choice-btn:active{transform:translateY(2px) scale(.99);filter:brightness(.98);box-shadow:inset 0 4px 14px rgba(0,0,0,.28)}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff}
+    .btn-secondary{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line)}
+    .btn-danger{background:rgba(255,107,122,.12);color:#ffd2d7;border:1px solid rgba(255,107,122,.25)}
+    .btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+    .page{display:none;padding:22px 0 40px}.page.active{display:block}.toolbar{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-bottom:14px;flex-wrap:wrap}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.card-inner{padding:24px}.section-title{margin:0 0 6px;font-size:1.6rem;line-height:1.1}.section-subtitle{margin:0;color:var(--muted);line-height:1.55}
+    .setup-grid{margin-top:20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.option-box{padding:18px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.04);min-height:170px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}.option-box h4{margin:0 0 8px;font-size:1.15rem}.option-box p{margin:0;color:var(--muted);line-height:1.5;font-size:.95rem}.count-group{display:flex;gap:10px;flex-wrap:wrap}.count-btn,.choice-btn{border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);cursor:pointer;transition:all .15s ease}.count-btn{padding:10px 14px;font-weight:700}.count-btn.selected,.choice-btn.selected{border-color:rgba(89,215,255,.7);background:rgba(89,215,255,.14)}
+    .quiz-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}.progress-wrap{margin:14px 0 18px;height:12px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}.progress-bar{height:100%;width:0%;border-radius:inherit;background:linear-gradient(90deg,var(--primary),var(--primary2));transition:width .25s ease}.quiz-card{padding:22px}.quiz-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}.meta-pill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted);font-size:.9rem}.question{font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.45;margin:0 0 18px}.image-box{margin:0 0 18px;padding:14px;border-radius:20px;border:1px solid var(--line);background:rgba(0,0,0,.18);display:none;justify-content:center;align-items:center;min-height:240px}.image-box img{max-width:100%;max-height:320px;object-fit:contain;border-radius:14px;display:block}.choices{display:grid;grid-template-columns:1fr;gap:12px}.choice-btn{text-align:left;padding:15px 16px;font-size:1rem;line-height:1.35;min-height:54px}.choice-btn.correct{border-color:rgba(61,220,151,.65);background:rgba(61,220,151,.12)}.choice-btn.wrong{border-color:rgba(255,107,122,.65);background:rgba(255,107,122,.12)}.feedback{margin-top:14px;min-height:28px;font-weight:700}.feedback.ok{color:var(--success)}.feedback.bad{color:#ff9aa5}.footer-actions{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-top:18px}.result-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}.result-box{padding:18px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.result-box strong{display:block;font-size:1.8rem;margin-bottom:6px}.result-box span{color:var(--muted);line-height:1.45}.hidden{display:none !important}.loading{display:inline-flex;align-items:center;gap:10px;color:var(--muted);font-size:.95rem}.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.22);border-top-color:var(--primary2);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .site-footer{padding:18px 0 28px;color:var(--muted);text-align:center;border-top:1px solid var(--line);margin-top:8px}
+    .hidden-seo{display:none}
+    @media (max-width:900px){.hero-grid,.setup-grid,.result-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.panel-main{padding:22px}} @media (max-width:540px){.topbar-inner{padding:12px 0}.brand p{display:none}.card-inner{padding:18px}.quiz-card{padding:18px}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand"><div class="brand-badge">TV</div><div><h1>Test Vial</h1><p>Práctica de conducción con puntaje automático</p></div></div>
+        <div class="pill" id="statusPill">Listo para comenzar</div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero page active" id="homePage">
+        <div class="hero-grid">
+          <div class="panel panel-main">
+            <div class="eyebrow">🚦 Entrenamiento vial interactivo</div>
+            <h2>Test para la obtención de Licencia de Conducir en Argentina. ¡Con preguntas reales!</h2>
+            <p>Destinado a las Clase B1 (automóviles, camionetas, utilitarios y casas rodantes motorizadas de hasta 3500kg de peso total) y B2 (adhiere un acoplado de hasta 750kg o casa rodante no motorizada).</p>
+            <div class="stats">
+              <div class="stat"><strong>2 actividades</strong><span>Multiple choice y reconocimiento visual de señales.</span></div>
+              <div class="stat"><strong>Selección aleatoria</strong><span>Puede elegirse la cantidad de preguntas que prefieras.</span></div>
+              <div class="stat"><strong>Puntaje automático</strong><span>El resultado final se expresa en porcentaje de aciertos.</span></div>
+            </div>
+          </div>
+          <div class="panel hero-side">
+            <div class="activity-card"><h3>Actividad 1 · Preguntas multiple choice</h3><p>Lee una pregunta y elige una de tres respuestas posibles. Solo una es correcta.</p><div class="actions"><button class="btn btn-primary" id="goActivity1">Empezar actividad 1</button></div></div>
+            <div class="activity-card"><h3>Actividad 2 · Identificación de señales</h3><p>Mira la imagen y selecciona el nombre correcto de la señal de tránsito.</p><div class="actions"><button class="btn btn-primary" id="goActivity2">Empezar actividad 2</button></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="setupPage">
+        <div class="card"><div class="card-inner">
+          <div class="toolbar"><div><h3 class="section-title" id="setupTitle">Configurar actividad</h3><p class="section-subtitle" id="setupSubtitle">Elegí cuántas preguntas querés resolver antes de comenzar.</p></div><div class="actions"><button class="btn btn-secondary" id="backHomeBtn">Volver al inicio</button></div></div>
+          <div class="setup-grid">
+            <div class="option-box"><div><h4>Seleccionar cantidad</h4><p>Elegí el tamaño del cuestionario. El sistema tomará preguntas al azar del CSV.</p></div><div class="count-group" id="countGroup"><button class="count-btn" data-count="20">20</button><button class="count-btn" data-count="40">40</button><button class="count-btn" data-count="100">100</button><button class="count-btn" data-count="200">200</button></div></div>
+            <div class="option-box"><div><h4>Iniciar actividad</h4><p>Cuando confirmes, se descargará el archivo CSV correspondiente y se armará el test.</p></div><div class="actions"><button class="btn btn-primary" id="startBtn" disabled>Comenzar</button></div></div>
+          </div>
+          <p class="section-subtitle" style="margin-top:18px;" id="loadingNotice"><span class="loading"><span class="spinner"></span> Los datos se cargan desde GitHub Pages.</span></p>
+        </div></div>
+      </section>
+
+      <section class="page" id="quizPage">
+        <div class="quiz-top"><div><h3 class="section-title" id="quizTitle">Actividad</h3><p class="section-subtitle" id="quizSubtitle"></p></div><div class="actions"><button class="btn btn-secondary" id="restartBtn">Reiniciar</button><button class="btn btn-danger" id="exitBtn">Salir</button></div></div>
+        <div class="card quiz-card">
+          <div class="quiz-meta"><div class="meta-pill" id="questionCounter">Pregunta 1 de 20</div><div class="meta-pill" id="scoreCounter">Aciertos: 0</div><div class="meta-pill" id="modeCounter">Modo</div></div>
+          <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+          <p class="question" id="questionText">Pregunta</p>
+          <div class="image-box" id="imageBox"><img id="signalImage" alt="" /></div>
+          <div class="choices" id="choices"></div>
+          <div class="feedback" id="feedback"></div>
+          <div class="footer-actions"><div class="section-subtitle" id="quizNote" style="display:none;">Cargando datos...</div><button class="btn btn-primary hidden" id="nextBtn">Siguiente</button></div>
+        </div>
+      </section>
+
+      <section class="page" id="resultPage">
+        <div class="card"><div class="card-inner">
+          <div class="eyebrow">Resultado final</div><h3 class="section-title" id="resultTitle">Tu puntaje</h3><p class="section-subtitle" id="resultSubtitle"></p>
+          <div class="result-grid"><div class="result-box"><strong id="resultPercent">0%</strong><span>Porcentaje de respuestas correctas.</span></div><div class="result-box"><strong id="resultHits">0</strong><span>Respuestas correctas.</span></div><div class="result-box"><strong id="resultTotal">0</strong><span>Total de preguntas realizadas.</span></div></div>
+          <div class="actions" style="margin-top:20px;"><button class="btn btn-primary" id="playAgainBtn">Jugar otra vez</button><button class="btn btn-secondary" id="homeBtn">Volver al inicio</button></div>
+        </div></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p style="margin:0;">(c) Pablo Kriger. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <div class="hidden-seo" aria-hidden="true">
+      test para licencia de conducir argentina examen vial preguntas reales señales de tránsito clase b1 clase b2 automóviles camionetas utilitarios casas rodantes motorizadas
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const DATA_MC = './Data/Kriger_Lista_Test_Conducir_B1.csv';
+      const DATA_SIGNS = './Data/Kriger_Senales.csv';
+
+      const pages = { home: document.getElementById('homePage'), setup: document.getElementById('setupPage'), quiz: document.getElementById('quizPage'), result: document.getElementById('resultPage') };
+      const statusPill = document.getElementById('statusPill');
+      const setupTitle = document.getElementById('setupTitle'); const setupSubtitle = document.getElementById('setupSubtitle');
+      const startBtn = document.getElementById('startBtn'); const backHomeBtn = document.getElementById('backHomeBtn'); const countGroup = document.getElementById('countGroup');
+      const goActivity1 = document.getElementById('goActivity1'); const goActivity2 = document.getElementById('goActivity2'); const loadingNotice = document.getElementById('loadingNotice');
+      const quizTitle = document.getElementById('quizTitle'); const quizSubtitle = document.getElementById('quizSubtitle'); const questionCounter = document.getElementById('questionCounter'); const scoreCounter = document.getElementById('scoreCounter'); const modeCounter = document.getElementById('modeCounter'); const progressBar = document.getElementById('progressBar'); const questionText = document.getElementById('questionText'); const imageBox = document.getElementById('imageBox'); const signalImage = document.getElementById('signalImage'); const choices = document.getElementById('choices'); const feedback = document.getElementById('feedback'); const nextBtn = document.getElementById('nextBtn'); const restartBtn = document.getElementById('restartBtn'); const exitBtn = document.getElementById('exitBtn');
+      const resultTitle = document.getElementById('resultTitle'); const resultSubtitle = document.getElementById('resultSubtitle'); const resultPercent = document.getElementById('resultPercent'); const resultHits = document.getElementById('resultHits'); const resultTotal = document.getElementById('resultTotal'); const playAgainBtn = document.getElementById('playAgainBtn'); const homeBtn = document.getElementById('homeBtn');
+
+      const state = {
+        dataReady:false,
+        mode:null,
+        selectedCount:20,
+        questions:[],
+        currentIndex:0,
+        score:0,
+        locked:false,
+        mcData:[],
+        signData:[],
+        signNames:[],
+        answerSlotHistory:[],
+        answerSlotCounts:[0,0,0]
+      };
+
+      const normalize = v => String(v ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim().replace(/\s+/g,' ').toLowerCase();
+      const showPage = n => { Object.values(pages).forEach(p=>p.classList.remove('active')); pages[n].classList.add('active'); };
+      const setStatus = t => { statusPill.textContent = t; };
+      const shuffle = a => { const arr=a.slice(); for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; };
+      const pick = (a,c) => shuffle(a).slice(0, Math.min(c,a.length));
+
+      function parseCSV(text, delimiter=';') {
+        const rows=[]; let row=[]; let field=''; let inQuotes=false; const src=String(text ?? '').replace(/^\uFEFF/, '');
+        for (let i=0;i<src.length;i++) {
+          const ch=src[i], next=src[i+1];
+          if (ch === '"') { if (inQuotes && next === '"') { field += '"'; i++; } else { inQuotes = !inQuotes; } continue; }
+          if (ch === delimiter && !inQuotes) { row.push(field); field=''; continue; }
+          if ((ch === '\n' || ch === '\r') && !inQuotes) { if (ch === '\r' && next === '\n') i++; row.push(field); if (row.some(c=>String(c).trim() !== '')) rows.push(row); row=[]; field=''; continue; }
+          field += ch;
+        }
+        if (field.length || row.length) { row.push(field); if (row.some(c=>String(c).trim() !== '')) rows.push(row); }
+        return rows;
+      }
+
+      function initCountSelection(){
+        document.querySelectorAll('.count-btn').forEach(b=>b.classList.remove('selected'));
+        const b20=document.querySelector('.count-btn[data-count="20"]');
+        if(b20) b20.classList.add('selected');
+        state.selectedCount = 20;
+      }
+
+      function resetAnswerMix(){
+        state.answerSlotHistory = [];
+        state.answerSlotCounts = [0, 0, 0];
+      }
+
+      function chooseCorrectSlot(){
+        const slots = [0, 1, 2];
+        let allowed = slots.slice();
+        const h = state.answerSlotHistory;
+        if (h.length >= 2 && h[h.length - 1] === h[h.length - 2]) {
+          allowed = allowed.filter(s => s !== h[h.length - 1]);
+        }
+        let minCount = Math.min(...allowed.map(s => state.answerSlotCounts[s]));
+        let candidates = allowed.filter(s => state.answerSlotCounts[s] === minCount);
+        if (!candidates.length) candidates = allowed.slice();
+        const chosen = candidates[Math.floor(Math.random() * candidates.length)];
+        state.answerSlotHistory.push(chosen);
+        state.answerSlotCounts[chosen] += 1;
+        return chosen;
+      }
+
+      function buildMixedOptions(correctText, wrongTexts){
+        const slot = chooseCorrectSlot();
+        const arr = new Array(3);
+        const cleanWrongs = shuffle(wrongTexts.slice(0, 2));
+        arr[slot] = { text: correctText, isCorrect: true };
+        let wi = 0;
+        for (let i = 0; i < 3; i++) {
+          if (i === slot) continue;
+          arr[i] = { text: cleanWrongs[wi++] || '', isCorrect: false };
+        }
+        return arr;
+      }
+
+      function fetchText(url){ return fetch(url,{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(`${url} (${r.status})`); return r.text(); }); }
+
+      function prepareSetup(mode){
+        state.mode = mode;
+        setupTitle.textContent = mode==='mc' ? 'Actividad 1 · Preguntas multiple choice' : 'Actividad 2 · Identificación de señales';
+        setupSubtitle.textContent = mode==='mc' ? 'Elegí cuántas preguntas querés responder. Se tomarán al azar del archivo CSV.' : 'Elegí cuántas señales querés identificar. Las imágenes se cargarán desde la URL del CSV o desde ./Images/.';
+        initCountSelection();
+        startBtn.disabled = !state.dataReady;
+        showPage('setup');
+        setStatus(mode==='mc' ? 'Configurando preguntas' : 'Configurando señales');
+      }
+
+      function selectCount(count){
+        state.selectedCount = count;
+        document.querySelectorAll('.count-btn').forEach(b=>b.classList.toggle('selected', Number(b.dataset.count)===count));
+        startBtn.disabled = !state.dataReady;
+      }
+
+      async function loadData(){
+        loadingNotice.style.display='block';
+        loadingNotice.innerHTML='<span class="loading"><span class="spinner"></span> Los datos se cargan desde GitHub Pages.</span>';
+        setStatus('Cargando archivos CSV...');
+        startBtn.disabled = true;
+        try {
+          const [mcText, signsText] = await Promise.all([fetchText(DATA_MC), fetchText(DATA_SIGNS)]);
+          const mcRows = parseCSV(mcText, ';');
+          const signRows = parseCSV(signsText, ';');
+          mcRows.shift(); signRows.shift();
+          state.mcData = mcRows.filter(r => r.length >= 8).map(r => ({
+            num:String(r[0]??'').trim(),
+            question:String(r[1]??'').trim(),
+            options:[String(r[2]??'').trim(),String(r[3]??'').trim(),String(r[4]??'').trim()],
+            correctIndex:Number(String(r[5]??'').trim()),
+            imageFlag:String(r[6]??'').trim(),
+            imageUrl:String(r[7]??'').trim()
+          })).filter(x => x.question && x.options.every(Boolean));
+
+          state.signData = signRows.filter(r => r.length >= 3).map(r => ({
+            classification:String(r[0]??'').trim(),
+            signName:String(r[1]??'').trim(),
+            url:String(r[2]??'').trim()
+          })).filter(x => x.signName && x.url);
+
+          state.signNames = [...new Set(state.signData.map(x => x.signName))];
+          state.dataReady = true;
+          loadingNotice.style.display = 'none';
+          startBtn.disabled = false;
+          setStatus(`Datos listos (${state.mcData.length} / ${state.signData.length})`);
+        } catch (err) {
+          console.error(err);
+          state.dataReady = false;
+          loadingNotice.style.display = 'block';
+          loadingNotice.textContent = 'No se pudieron cargar los CSV. Revisá la ruta y los nombres de archivo.';
+          setStatus('Error al cargar datos');
+        }
+      }
+
+      function buildQuiz(){
+        if (!state.dataReady) return alert('Todavía no se cargaron los archivos CSV.');
+        state.currentIndex = 0;
+        state.score = 0;
+        state.locked = false;
+        resetAnswerMix();
+        feedback.textContent='';
+        feedback.className='feedback';
+        nextBtn.classList.add('hidden');
+
+        if (state.mode === 'mc') {
+          state.questions = pick(state.mcData, state.selectedCount);
+          quizTitle.textContent = 'Actividad 1 · Preguntas multiple choice';
+          quizSubtitle.textContent = 'Seleccioná la respuesta correcta entre tres opciones.';
+          modeCounter.textContent = 'Modo: multiple choice';
+        } else {
+          state.questions = pick(state.signData, state.selectedCount);
+          quizTitle.textContent = 'Actividad 2 · Señales de tránsito';
+          quizSubtitle.textContent = 'Observá la imagen y elegí el nombre correcto de la señal.';
+          modeCounter.textContent = 'Modo: señales';
+        }
+
+        if (!state.questions.length) return alert('No hay preguntas disponibles para esta actividad.');
+        showPage('quiz');
+        renderQuestion();
+      }
+
+      function renderQuestion(){
+        const total = state.questions.length;
+        const current = state.questions[state.currentIndex];
+        const n = state.currentIndex + 1;
+
+        state.locked = false;
+        feedback.textContent='';
+        feedback.className='feedback';
+        nextBtn.classList.add('hidden');
+        choices.innerHTML='';
+
+        questionCounter.textContent = `Pregunta ${n} de ${total}`;
+        scoreCounter.textContent = `Aciertos: ${state.score}`;
+        progressBar.style.width = `${(state.currentIndex / total) * 100}%`;
+
+        if (state.mode === 'mc') {
+          const imageUrl = String(current.imageFlag).trim() === '2' && String(current.imageUrl).trim() && String(current.imageUrl).trim() !== '-' ? current.imageUrl : '';
+          if (imageUrl) {
+            imageBox.style.display='flex';
+            signalImage.src = imageUrl;
+            signalImage.alt = 'Imagen asociada a la pregunta';
+          } else {
+            imageBox.style.display='none';
+            signalImage.removeAttribute('src');
+            signalImage.alt='';
+          }
+
+          questionText.textContent = current.question;
+
+          const correctIndex = Math.max(1, Number(current.correctIndex) || 1);
+          const correctText = current.options[correctIndex - 1] || current.options[0];
+          const wrongTexts = current.options.filter((_, idx) => idx !== correctIndex - 1);
+          buildMixedOptions(correctText, wrongTexts).forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className='choice-btn';
+            btn.textContent = opt.text;
+            btn.addEventListener('click', () => handleAnswer(btn, opt.isCorrect, correctText));
+            choices.appendChild(btn);
+          });
+        } else {
+          imageBox.style.display='flex';
+          questionText.textContent = '¿Cuál es el nombre correcto de esta señal?';
+          signalImage.src = current.url;
+          signalImage.alt = current.signName || 'Señal de tránsito';
+
+          const wrongPool = state.signNames.filter(name => normalize(name) !== normalize(current.signName));
+          const wrongs = pick(wrongPool, 2);
+          buildMixedOptions(current.signName, wrongs).forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className='choice-btn';
+            btn.textContent = opt.text;
+            btn.addEventListener('click', () => handleAnswer(btn, opt.isCorrect, current.signName));
+            choices.appendChild(btn);
+          });
+        }
+      }
+
+      function handleAnswer(button, isCorrect, correctAnswer){
+        if (state.locked) return;
+        state.locked = true;
+
+        [...choices.querySelectorAll('button')].forEach(btn => btn.disabled = true);
+
+        if (isCorrect) {
+          button.classList.add('correct');
+          feedback.textContent = 'Respuesta correcta.';
+          feedback.classList.add('ok');
+          state.score += 1;
+        } else {
+          button.classList.add('wrong');
+          feedback.innerHTML = `Incorrecto. La respuesta correcta es: <strong>${escapeHtml(correctAnswer)}</strong>`;
+          feedback.classList.add('bad');
+          const correctBtn = [...choices.querySelectorAll('button')].find(btn => normalize(btn.textContent) === normalize(correctAnswer));
+          if (correctBtn) correctBtn.classList.add('correct');
+        }
+
+        scoreCounter.textContent = `Aciertos: ${state.score}`;
+        nextBtn.textContent = state.currentIndex === state.questions.length - 1 ? 'Ver resultado' : 'Siguiente';
+        nextBtn.classList.remove('hidden');
+        progressBar.style.width = `${((state.currentIndex + 1) / state.questions.length) * 100}%`;
+      }
+
+      function escapeHtml(str){
+        return String(str)
+          .replace(/&/g,'&amp;')
+          .replace(/</g,'&lt;')
+          .replace(/>/g,'&gt;')
+          .replace(/\"/g,'&quot;')
+          .replace(/'/g,'&#39;');
+      }
+
+      function nextQuestion(){
+        if (state.currentIndex < state.questions.length - 1) {
+          state.currentIndex += 1;
+          renderQuestion();
+        } else {
+          showResults();
+        }
+      }
+
+      function showResults(){
+        const total = state.questions.length;
+        const percent = total ? Math.round((state.score / total) * 100) : 0;
+        const approved = percent > 80;
+
+        progressBar.style.width='100%';
+        resultTitle.textContent = state.mode === 'mc' ? 'Resultado de preguntas multiple choice' : 'Resultado de señales de tránsito';
+        resultSubtitle.textContent = approved
+          ? `Respondiste ${state.score} de ${total} preguntas correctamente. Aprobado por superar el 80%.`
+          : `Respondiste ${state.score} de ${total} preguntas correctamente. No alcanzó el 80% requerido.`;
+        resultPercent.textContent = `${percent}%`;
+        resultHits.textContent = state.score;
+        resultTotal.textContent = total;
+        setStatus(`Resultado: ${percent}%`);
+        showPage('result');
+      }
+
+      function startActivity(mode){
+        if (!state.dataReady) return alert('Todavía se están cargando los archivos CSV.');
+        if (!state.selectedCount) state.selectedCount = 20;
+        state.mode = mode || 'mc';
+        buildQuiz();
+      }
+
+      goActivity1.addEventListener('click', () => prepareSetup('mc'));
+      goActivity2.addEventListener('click', () => prepareSetup('signs'));
+      backHomeBtn.addEventListener('click', () => { state.mode = null; initCountSelection(); showPage('home'); setStatus('Listo para comenzar'); });
+      countGroup.addEventListener('click', e => { const btn = e.target.closest('.count-btn'); if (!btn) return; selectCount(Number(btn.dataset.count)); });
+      startBtn.addEventListener('click', () => startActivity(state.mode));
+      nextBtn.addEventListener('click', nextQuestion);
+      restartBtn.addEventListener('click', () => startActivity(state.mode));
+      exitBtn.addEventListener('click', () => { state.mode = null; initCountSelection(); showPage('home'); setStatus('Listo para comenzar'); });
+      playAgainBtn.addEventListener('click', () => startActivity(state.mode));
+      homeBtn.addEventListener('click', () => { state.mode = null; initCountSelection(); showPage('home'); setStatus('Listo para comenzar'); });
+
+      initCountSelection();
+      showPage('home');
+      loadData();
+    })();
+  </script>
+</body>
+</html>
